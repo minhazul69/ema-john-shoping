@@ -1,0 +1,24 @@
+.background {
+  background-color: #1c2b35;
+}
+.close-button {
+  background: #816117d2;
+}
+.N-link {
+  position: relative;
+  padding-bottom: 8px;
+}
+.N-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: orange;
+  transition: all 0.3s ease;
+}
+.N-link:hover::before {
+  width: 100%;
+}
+/* .H-link; */

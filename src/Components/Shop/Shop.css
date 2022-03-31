@@ -1,0 +1,25 @@
+.container-fluid {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  padding: 0 30px;
+}
+.cart-container {
+  background-color: #ffe0b3;
+  margin-left: 20px;
+}
+@media screen and (max-width: 768px) {
+  .container-fluid {
+    grid-template-columns: 2fr 2fr;
+  }
+}
+@media screen and (max-width: 500px) {
+  .container-fluid {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 0 5px;
+  }
+  .cart-container {
+    margin-bottom: 40px;
+    margin-left: 0;
+  }
+}

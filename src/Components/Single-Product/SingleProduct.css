@@ -1,0 +1,23 @@
+.cards {
+  width: 330px;
+  height: 560px;
+  border-radius: 8px;
+}
+.card-info-details {
+  color: rgb(32, 32, 146);
+}
+.cart-btn {
+  background-color: #ffe0b3;
+  transition: all ease 0.3s;
+  border-radius: 0 0 8px 8px;
+}
+.cart-btn:hover {
+  background-color: #f7ae41;
+}
+
+@media screen and (max-width: 500px) {
+  .cards {
+    width: 100%;
+    height: 100%;
+  }
+}

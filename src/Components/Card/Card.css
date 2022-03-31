@@ -1,0 +1,24 @@
+.add-card {
+  position: sticky;
+  top: 20px;
+  padding: 5px 17px;
+}
+.add-card h4 {
+  text-align: center;
+}
+.card-info {
+  margin-top: 50px;
+}
+.card-del-btn {
+  background-color: #ff3030;
+  padding: 10px 0;
+}
+.card-add-btn {
+  background-color: #ff9900;
+  padding: 10px 0;
+}
+@media screen and (max-width: 500px) {
+  .add-card {
+    margin-bottom: 20px;
+  }
+}
