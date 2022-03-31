@@ -17,7 +17,7 @@ const Shop = () => {
   return (
     <div className="container-fluid mt-5 pt-4">
       <div className="item-container">
-        <div className="row">
+        <div className="row mx-auto ">
           {products.map((product) => (
             <SingleProduct
               product={product}

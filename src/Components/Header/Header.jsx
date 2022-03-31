@@ -17,7 +17,16 @@ const Header = () => {
           <Navbar.Brand href="#">
             <img width={"80%"} src={logo} alt="" />
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="offcanvasNavbar" />
+          <div className="lg-nav-link">
+            <a href="/shop">Shop</a>
+            <a href="/order">Order</a>
+            <a href="/review">Review</a>
+            <a href="/ManageInventory">Manage Inventory</a>
+          </div>
+          <Navbar.Toggle
+            aria-controls="offcanvasNavbar"
+            className="md-navbar"
+          />
           <Navbar.Offcanvas
             id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel"

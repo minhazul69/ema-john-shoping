@@ -4,9 +4,28 @@
 .close-button {
   background: #816117d2;
 }
+.lg-nav-link a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 17px;
+  margin-left: 30px;
+  font-weight: 500;
+  transition: all ease-in 0.3s;
+}
+.lg-nav-link a:hover {
+  color: orange;
+}
+.md-navbar {
+  display: none;
+}
+
 .N-link {
   position: relative;
-  padding-bottom: 8px;
+  padding-bottom: 10px;
+}
+
+.N-link:hover::before {
+  width: 100%;
 }
 .N-link::before {
   content: "";
@@ -18,7 +37,29 @@
   background: orange;
   transition: all 0.3s ease;
 }
-.N-link:hover::before {
+.lg-nav-link a {
+  position: relative;
+  padding-bottom: 10px;
+}
+.lg-nav-link a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: orange;
+  transition: all 0.3s ease;
+}
+.lg-nav-link a:hover::before {
   width: 100%;
 }
-/* .H-link; */
+
+@media screen and (max-width: 768px) {
+  .md-navbar {
+    display: block;
+  }
+  .lg-nav-link a {
+    display: none;
+  }
+}

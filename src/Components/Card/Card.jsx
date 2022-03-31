@@ -2,7 +2,6 @@ import React from "react";
 import "./Card.css";
 
 const Card = (props) => {
-  console.log(props);
   return (
     <div className="add-card mt-4">
       <h4>Order Summary</h4>
