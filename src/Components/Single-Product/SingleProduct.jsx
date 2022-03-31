@@ -4,6 +4,9 @@ import "./SingleProduct.css";
 
 const SingleProduct = (props) => {
   const { name, img, price, ratings, seller } = props.product;
+  const scrollTop = () => {
+    window.scrollTo(0, 0);
+  };
   return (
     <div className="col-xl-4 col-lg-6 col-md-12 mb-4 pe-1">
       <Card className="cards">
@@ -19,7 +22,7 @@ const SingleProduct = (props) => {
           </Card.Text>
         </Card.Body>
         <button
-          onClick={props.handleAddToCart}
+          onClick={(props.handleAddToCart, scrollTop)}
           className="w-100 border-0 p-2 cart-btn"
         >
           Add To Cart <i className="fa-solid fa-cart-plus"></i>
