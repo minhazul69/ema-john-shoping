@@ -8,20 +8,23 @@ import {
   NavDropdown,
 } from "react-bootstrap";
 import logo from "../../images/Logo.svg";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <div>
       <Navbar className="background" variant="dark" expand={false}>
         <Container>
-          <Navbar.Brand href="#">
-            <img width={"80%"} src={logo} alt="" />
-          </Navbar.Brand>
+          <Link to="/">
+            <Navbar.Brand>
+              <img width={"80%"} src={logo} alt="" />
+            </Navbar.Brand>
+          </Link>
           <div className="lg-nav-link">
-            <a href="/shop">Shop</a>
-            <a href="/order">Order</a>
-            <a href="/review">Review</a>
-            <a href="/ManageInventory">Manage Inventory</a>
+            <Link to="/">Home</Link>
+            <Link to="/shop">Shop</Link>
+            <Link to="/shop">Order</Link>
+            <Link to="/shop">review</Link>
           </div>
           <Navbar.Toggle
             aria-controls="offcanvasNavbar"
@@ -39,15 +42,18 @@ const Header = () => {
             </Offcanvas.Header>
             <Offcanvas.Body className="bg-dark">
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link className="text-light N-link" href="#action1">
+                <Link to="/" className="text-light N-link text-decoration-none">
+                  Home
+                </Link>
+                <Link
+                  to="/shop"
+                  className="text-light N-link text-decoration-none"
+                >
+                  Shop
+                </Link>
+                <Link to="/" className="text-light N-link text-decoration-none">
                   Order
-                </Nav.Link>
-                <Nav.Link className="text-light N-link" href="#action2">
-                  Order Review
-                </Nav.Link>
-                <Nav.Link href="#action2" className="text-light N-link">
-                  Manage Inventory
-                </Nav.Link>
+                </Link>
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

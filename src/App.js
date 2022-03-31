@@ -3,12 +3,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./Components/Header/Header";
 import MainHeaderSection from "./Components/Main-Header-Section/MainHeaderSection";
 import Shop from "./Components/Shop/Shop";
+import { Route, Routes } from "react-router-dom";
 function App() {
   return (
     <div>
       <Header></Header>
-      <MainHeaderSection></MainHeaderSection>
-      <Shop></Shop>
+      <Routes>
+        <Route path="/" element={<MainHeaderSection />} />
+        <Route path="/shop" element={<Shop />} />
+      </Routes>
     </div>
   );
 }
