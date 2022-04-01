@@ -2,8 +2,8 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import "./SingleProduct.css";
 
-const SingleProduct = (props) => {
-  const { name, img, price, ratings, seller } = props.product;
+const SingleProduct = ({ product, handleAddToCart }) => {
+  const { name, img, price, ratings, seller } = product;
   const scrollTop = () => {
     window.scrollTo(0, 0);
   };
@@ -22,7 +22,7 @@ const SingleProduct = (props) => {
           </Card.Text>
         </Card.Body>
         <button
-          onClick={(props.handleAddToCart, scrollTop)}
+          onClick={() => handleAddToCart(product)}
           className="w-100 border-0 p-2 cart-btn"
         >
           Add To Cart <i className="fa-solid fa-cart-plus"></i>

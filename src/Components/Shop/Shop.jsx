@@ -10,9 +10,10 @@ const Shop = () => {
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
-  // const [cart, useCart] = useState([]);
-  const handleAddToCart = (selectProduct) => {
-    <Card product={selectProduct}></Card>;
+  const [cart, setCart] = useState([]);
+  const handleAddToCart = (props) => {
+    const newCart = [...cart, props];
+    setCart(newCart);
   };
   return (
     <div className="container-fluid mt-5 pt-4">
@@ -22,13 +23,13 @@ const Shop = () => {
             <SingleProduct
               product={product}
               key={product.id}
-              handleAddToCart={() => handleAddToCart(product)}
+              handleAddToCart={handleAddToCart}
             ></SingleProduct>
           ))}
         </div>
       </div>
       <div className="cart-container">
-        <Card></Card>
+        <Card cart={cart}></Card>
       </div>
     </div>
   );
