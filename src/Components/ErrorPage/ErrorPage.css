@@ -1,0 +1,25 @@
+.error-page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  height: 50%;
+  margin: auto;
+}
+
+.error-page-info {
+  display: flex;
+  align-items: center;
+  /* position: absolute; */
+}
+.error-page-info h1 {
+  font-weight: normal;
+  font-size: 50px;
+  color: #2a414f;
+}
+.horizontal-line {
+  height: 45px;
+  width: 4px;
+  background: orange;
+  margin: 0 25px;
+}

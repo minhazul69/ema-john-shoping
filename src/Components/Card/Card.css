@@ -13,10 +13,7 @@
   background-color: #ff3030;
   padding: 10px 0;
 }
-.card-add-btn {
-  background-color: #ff9900;
-  padding: 10px 0;
-}
+
 @media screen and (max-width: 500px) {
   .add-card {
     margin-bottom: 20px;

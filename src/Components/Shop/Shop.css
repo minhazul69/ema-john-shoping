@@ -7,6 +7,10 @@
   background-color: #ffe0b3;
   margin-left: 20px;
 }
+.card-add-btn {
+  background-color: #ff9900;
+  padding: 10px 0;
+}
 @media screen and (max-width: 768px) {
   .container-fluid {
     grid-template-columns: 2fr 2fr;

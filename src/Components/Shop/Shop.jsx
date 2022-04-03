@@ -1,27 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, getShoppingCart } from "react";
+import { Link } from "react-router-dom";
+import useCart from "../../Hooks/useCart";
 import useProducts from "../../Hooks/useProducts";
 
-import { addToDb, getShoppingCart } from "../../utilities/fakedb";
+import { addToDb, deleteShoppingCart } from "../../utilities/fakedb";
 import Card from "../Card/Card";
 import SingleProduct from "../Single-Product/SingleProduct";
 import "./Shop.css";
 
 const Shop = () => {
   const [products, setProducts] = useProducts();
-  const [cart, setCart] = useState([]);
-  useEffect(() => {
-    const storedCart = getShoppingCart();
-    const saveCart = [];
-    for (const id in storedCart) {
-      const addProduct = products.find((product) => product.id === id);
-      if (addProduct) {
-        const quantity = storedCart[id];
-        addProduct.quantity = quantity;
-        saveCart.push(addProduct);
-      }
-    }
-    setCart(saveCart);
-  }, [products]);
+  const [cart, setCart] = useCart(products);
+
   const handleAddToCart = (selectProduct) => {
     let newCart = [];
     const exists = cart.find((product) => product.id === selectProduct.id);
@@ -35,6 +25,10 @@ const Shop = () => {
     }
     setCart(newCart);
     addToDb(selectProduct.id);
+  };
+  const handleClearCart = () => {
+    setCart([]);
+    deleteShoppingCart();
   };
   return (
     <div className="container-fluid mt-5 pt-4">
@@ -50,7 +44,15 @@ const Shop = () => {
         </div>
       </div>
       <div className="cart-container">
-        <Card cart={cart}></Card>
+        <Card cart={cart} handleClearCart={handleClearCart}>
+          {cart.length === 0 || (
+            <Link to="/order">
+              <button className="btn w-100 rounded-2 mt-3 text-light card-add-btn">
+                Review Order <i className="fa-solid fa-arrow-right"></i>
+              </button>
+            </Link>
+          )}
+        </Card>
       </div>
     </div>
   );
