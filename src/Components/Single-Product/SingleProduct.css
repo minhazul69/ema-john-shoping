@@ -14,7 +14,12 @@
 .cart-btn:hover {
   background-color: #f7ae41;
 }
-
+@media screen and (max-width: 1024px) {
+  .cards {
+    width: 100%;
+    height: 100%;
+  }
+}
 @media screen and (max-width: 500px) {
   .cards {
     width: 100%;

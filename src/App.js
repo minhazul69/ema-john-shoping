@@ -4,6 +4,7 @@ import Header from "./Components/Header/Header";
 import MainHeaderSection from "./Components/Main-Header-Section/MainHeaderSection";
 import Shop from "./Components/Shop/Shop";
 import { Route, Routes } from "react-router-dom";
+import Order from "./Components/Order/Order";
 function App() {
   return (
     <div>
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainHeaderSection />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/order" element={<Order />} />
       </Routes>
     </div>
   );

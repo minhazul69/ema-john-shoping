@@ -23,8 +23,8 @@ const Header = () => {
           <div className="lg-nav-link">
             <Link to="/">Home</Link>
             <Link to="/shop">Shop</Link>
-            <Link to="/shop">Order</Link>
-            <Link to="/shop">review</Link>
+            <Link to="/order">Order</Link>
+            <Link to="/review">review</Link>
           </div>
           <Navbar.Toggle
             aria-controls="offcanvasNavbar"
@@ -51,8 +51,17 @@ const Header = () => {
                 >
                   Shop
                 </Link>
-                <Link to="/" className="text-light N-link text-decoration-none">
+                <Link
+                  to="/order"
+                  className="text-light N-link text-decoration-none"
+                >
                   Order
+                </Link>
+                <Link
+                  to="/reviow"
+                  className="text-light N-link text-decoration-none"
+                >
+                  Reviow
                 </Link>
               </Nav>
             </Offcanvas.Body>
