@@ -11,6 +11,7 @@ import "./Shop.css";
 const Shop = () => {
   const [products, setProducts] = useProducts();
   const [cart, setCart] = useCart(products);
+  const [searchResult, setSearchResult] = useState([]);
 
   const handleAddToCart = (selectProduct) => {
     let newCart = [];
@@ -30,11 +31,30 @@ const Shop = () => {
     setCart([]);
     deleteShoppingCart();
   };
+  const handleSearch = (event) => {
+    const searchText = event.target.value;
+    const match = products.filter((product) =>
+      product.name.includes(searchText)
+    );
+    setSearchResult(match);
+  };
+
   return (
     <div className="container-fluid mt-5 pt-4">
       <div className="item-container">
+        <div>
+          <form className="d-flex w-50 mx-auto mb-4">
+            <input
+              onChange={handleSearch}
+              className="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+          </form>
+        </div>
         <div className="row  ">
-          {products.map((product) => (
+          {searchResult.map((product) => (
             <SingleProduct
               product={product}
               key={product.id}
