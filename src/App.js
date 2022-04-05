@@ -6,6 +6,7 @@ import Shop from "./Components/Shop/Shop";
 import { Route, Routes } from "react-router-dom";
 import Order from "./Components/Order/Order";
 import ErrorPage from "./Components/ErrorPage/ErrorPage";
+import Footer from "./Components/Footer/Footer";
 function App() {
   return (
     <div>
@@ -16,6 +17,7 @@ function App() {
         <Route path="/order" element={<Order />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }
