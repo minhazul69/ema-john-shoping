@@ -1,31 +1,34 @@
 import React from "react";
 import "./Header.css";
-import {
-  Navbar,
-  Container,
-  Nav,
-  Offcanvas,
-  NavDropdown,
-} from "react-bootstrap";
+import { Navbar, Container, Nav, Offcanvas } from "react-bootstrap";
 import logo from "../../images/Logo.svg";
 import { Link } from "react-router-dom";
+import CustomLink from "../CustomLink/CustomLink";
 
 const Header = () => {
   return (
     <div>
-      <Navbar className="background" variant="dark" expand={false}>
+      <Navbar className="background py-3" variant="dark" expand={false}>
         <Container>
           <Link to="/">
             <Navbar.Brand>
               <img width={"80%"} src={logo} alt="" />
             </Navbar.Brand>
           </Link>
-          <div className="lg-nav-link">
-            <Link to="/">Home</Link>
-            <Link to="/shop">Shop</Link>
-            <Link to="/order">Order</Link>
-            <Link to="/review">review</Link>
-          </div>
+          <ul className="header-nav-item">
+            <li>
+              <CustomLink to="/">Home</CustomLink>
+            </li>
+            <li>
+              <CustomLink to="/shop">Shop</CustomLink>
+            </li>
+            <li>
+              <CustomLink to="/order">Order</CustomLink>
+            </li>
+            <li>
+              <CustomLink to="/review">review</CustomLink>
+            </li>
+          </ul>
           <Navbar.Toggle
             aria-controls="offcanvasNavbar"
             className="md-navbar"

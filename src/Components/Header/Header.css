@@ -4,16 +4,24 @@
 .close-button {
   background: #816117d2;
 }
-
-.lg-nav-link a {
+.header-nav-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+.header-nav-item li {
+  margin-left: 20px;
+}
+.header-nav-item a {
   text-decoration: none;
-  color: #fff;
   font-size: 17px;
-  margin-left: 30px;
   font-weight: 500;
   transition: all ease-in 0.3s;
 }
-.lg-nav-link a:hover {
+.header-nav-item a:hover {
+  color: orange;
+}
+.header-nav-item a:hover {
   color: orange;
 }
 .md-navbar {
@@ -38,29 +46,12 @@
   background: orange;
   transition: all 0.3s ease;
 }
-.lg-nav-link a {
-  position: relative;
-  padding-bottom: 10px;
-}
-.lg-nav-link a::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background: orange;
-  transition: all 0.3s ease;
-}
-.lg-nav-link a:hover::before {
-  width: 100%;
-}
 
 @media screen and (max-width: 768px) {
   .md-navbar {
     display: block;
   }
-  .lg-nav-link a {
+  .header-nav-item {
     display: none;
   }
 }

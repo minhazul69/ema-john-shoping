@@ -1,0 +1,21 @@
+.custom-link {
+  margin-bottom: 0;
+}
+.custom-link {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.custom-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: orange;
+  transition: all 0.3s ease;
+}
+.custom-link:hover::before {
+  width: 100%;
+}

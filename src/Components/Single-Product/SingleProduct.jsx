@@ -15,8 +15,8 @@ const SingleProduct = ({ product, handleAddToCart }) => {
           <Card.Title>{name}</Card.Title>
           <h5 className="mt-4">Price: ${price}</h5>
           <Card.Text className="mt-4 card-info-details">
-            <p className="mb-0">Manufacturer: {seller}</p>
-            <p className="mb-0">Rating: {ratings} Star</p>
+            <p className="mb-2">Manufacturer: {seller}</p>
+            <Rating ratings={ratings}></Rating>
           </Card.Text>
         </Card.Body>
         <button
@@ -28,6 +28,72 @@ const SingleProduct = ({ product, handleAddToCart }) => {
       </Card>
     </div>
   );
+};
+export const Rating = ({ ratings }) => {
+  if (ratings === 5) {
+    return (
+      <p className="text-warning icon">
+        <div>
+          <small className="text-success">{ratings} Star</small>
+          <div>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+          </div>
+        </div>
+      </p>
+    );
+  } else if (ratings === 4) {
+    return (
+      <p className="text-warning icon">
+        <div>
+          <small className="text-success">{ratings} Star</small>
+          <div>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star gray"></i>
+          </div>
+        </div>
+      </p>
+    );
+  } else if (ratings === 3) {
+    return (
+      <p className="text-warning icon">
+        <div>
+          <small className="text-success">{ratings} Star</small>
+          <div>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star gray"></i>
+            <i className="fa-solid fa-star gray"></i>
+          </div>
+        </div>
+      </p>
+    );
+  } else if (ratings === 2) {
+    return (
+      <p className="text-warning icon">
+        <div>
+          <small className="text-success">{ratings} Star</small>
+          <div>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star gray"></i>
+            <i className="fa-solid fa-star gray"></i>
+            <i className="fa-solid fa-star gray"></i>
+          </div>
+        </div>
+      </p>
+    );
+  } else if (ratings) {
+    return <p className="text-warning icon">No Rating</p>;
+  }
+  return <div></div>;
 };
 
 export default SingleProduct;

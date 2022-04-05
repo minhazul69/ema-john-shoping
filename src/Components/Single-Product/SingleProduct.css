@@ -1,6 +1,6 @@
 .cards {
   width: 330px;
-  height: 560px;
+  height: 600px;
   border-radius: 8px;
 }
 .card-info-details {
@@ -13,6 +13,9 @@
 }
 .cart-btn:hover {
   background-color: #f7ae41;
+}
+.gray {
+  color: lightgray;
 }
 @media screen and (max-width: 1024px) {
   .cards {
