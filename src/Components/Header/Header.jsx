@@ -26,7 +26,10 @@ const Header = () => {
               <CustomLink to="/order">Order</CustomLink>
             </li>
             <li>
-              <CustomLink to="/review">review</CustomLink>
+              <CustomLink to="/review">Review</CustomLink>
+            </li>
+            <li>
+              <CustomLink to="/login">Login</CustomLink>
             </li>
           </ul>
           <Navbar.Toggle
