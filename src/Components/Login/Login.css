@@ -11,9 +11,10 @@
   font-weight: 500;
   background-color: #ffe0b3;
   border: none;
+  transition: all ease-in 0.2s;
 }
 .login-btn-bg-color:hover {
-  background-color: #ffe0b3;
+  background-color: #ffd493;
   color: #0e161ac8;
 }
 .content {
