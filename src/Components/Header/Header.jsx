@@ -69,6 +69,12 @@ const Header = () => {
                 >
                   Reviow
                 </Link>
+                <Link
+                  to="/login"
+                  className="text-light N-link text-decoration-none"
+                >
+                  Login
+                </Link>
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
