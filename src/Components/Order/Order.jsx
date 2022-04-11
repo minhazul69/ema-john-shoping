@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import useCart from "../../Hooks/useCart";
 import useProducts from "../../Hooks/useProducts";
 import { deleteShoppingCart, removeFromDb } from "../../utilities/fakedb";
@@ -32,9 +33,12 @@ const Order = () => {
       <div className="cart-container pb-3 rounded-3">
         <Card cart={cart} handleClearCart={handleClearCart}>
           {cart.length === 0 || (
-            <button className="btn w-100 rounded-2 mt-3 text-light card-add-btn">
+            <Link
+              to="/shipping"
+              className="btn w-100 rounded-2 mt-3 text-light card-add-btn"
+            >
               Proceed Checkout <i className="fa-solid fa-credit-card"></i>
-            </button>
+            </Link>
           )}
         </Card>
       </div>

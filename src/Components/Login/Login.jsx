@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
 import googleLogo from "../../images/google.svg";
 import auth from "../../firebase.init";
@@ -10,10 +10,12 @@ const Login = () => {
   const [validated, setValidated] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   // const [error, setError] = useState("");
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-  const navigate = useNavigate();
   const handleEmailBlur = (event) => {
     setEmail(event.target.value);
   };
@@ -23,7 +25,7 @@ const Login = () => {
   if (user) {
     // navigate("/shop");
     setTimeout(() => {
-      navigate("/shop");
+      navigate(from, { replace: true });
     }, 2000);
   }
   const handleSubmit = (event) => {

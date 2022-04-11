@@ -1,11 +1,18 @@
 import React from "react";
 import "./Header.css";
-import { Navbar, Container, Nav, Offcanvas } from "react-bootstrap";
+import { Navbar, Container, Nav, Offcanvas, Button } from "react-bootstrap";
 import logo from "../../images/Logo.svg";
 import { Link } from "react-router-dom";
 import CustomLink from "../CustomLink/CustomLink";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import { signOut } from "firebase/auth";
 
 const Header = () => {
+  const [user] = useAuthState(auth);
+  const handleSignOut = () => {
+    signOut(auth);
+  };
   return (
     <div>
       <Navbar className="background py-3" variant="dark" expand={false}>
@@ -26,11 +33,23 @@ const Header = () => {
               <CustomLink to="/order">Order</CustomLink>
             </li>
             <li>
-              <CustomLink to="/review">Review</CustomLink>
+              <CustomLink to="/inventory">Inventory</CustomLink>
             </li>
             <li>
-              <CustomLink to="/login">Login</CustomLink>
+              <CustomLink to="/review">Review</CustomLink>
             </li>
+            {user ? (
+              <Button
+                onClick={handleSignOut}
+                variant="link shadow-none text-light border-secondary text-decoration-none fw-bold pb-2 border ms-3 rounded-0 bg-primary"
+              >
+                Logout
+              </Button>
+            ) : (
+              <li>
+                <CustomLink to="/login">Login</CustomLink>
+              </li>
+            )}
           </ul>
           <Navbar.Toggle
             aria-controls="offcanvasNavbar"
@@ -63,6 +82,7 @@ const Header = () => {
                 >
                   Order
                 </Link>
+
                 <Link
                   to="/reviow"
                   className="text-light N-link text-decoration-none"

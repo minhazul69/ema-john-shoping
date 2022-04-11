@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Form, ToastContainer } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import googleLogo from "../../images/google.svg";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-import { Toast } from "bootstrap";
 
 const SignUp = () => {
   const [validated, setValidated] = useState(false);
@@ -29,7 +28,7 @@ const SignUp = () => {
 
   if (user) {
     setTimeout(() => {
-      navigate("/shop");
+      navigate("/inventory");
     }, 2000);
   }
   const handleSubmit = (event) => {
