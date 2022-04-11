@@ -61,6 +61,24 @@ const SignUp = () => {
             required
             type="email"
           />
+          <div className="position-relative">
+            {user && (
+              <div className="toast show position-absolute top-50 end-0 ">
+                <div className="toast-header  border-bottom-0 border-info bg-danger text-light fw-bold">
+                  <div className="d-flex align-items-center justify-content-center">
+                    <span className="px-4">
+                      Please Check Your Email Address And Verified Your Email
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    className="btn-close ms-auto btn-close-warning"
+                    data-bs-dismiss="toast"
+                  ></button>
+                </div>
+              </div>
+            )}
+          </div>
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">
             Please provide a valid a valid email
@@ -120,7 +138,7 @@ const SignUp = () => {
         </button>
 
         <p className="text-center mt-1">
-          Already have an account?
+          Already have an account<span className="mx-1">?</span>
           <Link to="/login" className=" text-decoration-none text-warning">
             Login
           </Link>

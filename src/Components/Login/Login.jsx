@@ -86,8 +86,7 @@ const Login = () => {
             </div>
           </div>
         )}
-        {/* <p>{error ? error?.message : "login successfull"}</p> */}
-        {/* <p>{user ? "login SuccessFull" : "please Login"}</p> */}
+
         {loading && <p>Loading....</p>}
         <button
           type="submit "
@@ -97,7 +96,7 @@ const Login = () => {
         </button>
 
         <p className="text-center mt-1">
-          New to Ema-john?
+          New to Ema-john<span className="mx-1">?</span>
           <Link to="/signup" className=" text-decoration-none text-warning">
             Create New Account
           </Link>
