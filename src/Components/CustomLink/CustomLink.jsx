@@ -7,7 +7,10 @@ function CustomLink({ children, to, ...props }) {
   let match = useMatch({ path: resolved.pathname, end: true });
 
   return (
-    <div className="custom-link">
+    <div
+      className="custom-link"
+      style={{ borderColor: match ? "orange" : "#1c2b35" }}
+    >
       <Link
         style={{
           color: match ? "orange" : "white",

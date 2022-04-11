@@ -1,9 +1,9 @@
 .custom-link {
   margin-bottom: 0;
-}
-.custom-link {
   position: relative;
   padding-bottom: 10px;
+  border-bottom: 2px solid #1c2b35;
+  padding-top: 5px;
 }
 
 .custom-link::before {
