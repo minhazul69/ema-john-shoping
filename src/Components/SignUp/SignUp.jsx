@@ -1,28 +1,37 @@
 import React, { useState } from "react";
-import { Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Form, ToastContainer } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import googleLogo from "../../images/google.svg";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import { Toast } from "bootstrap";
 
 const SignUp = () => {
   const [validated, setValidated] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
+  const [siteError, setSiteError] = useState("");
+
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const navigate = useNavigate();
 
   const handleEmailBlur = (event) => {
     setEmail(event.target.value);
   };
   const handlePasswordBlur = (event) => {
-    setEmail(event.target.value);
+    setPassword(event.target.value);
   };
   const handleConfirmPasswordBluer = (event) => {
-    setEmail(event.target.value);
+    setConfirmPassword(event.target.value);
   };
-  // const handleSubmit = () => {
 
-  // };
-
+  if (user) {
+    setTimeout(() => {
+      navigate("/shop");
+    }, 2000);
+  }
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -33,13 +42,16 @@ const SignUp = () => {
     }
     setValidated(true);
     if (password !== confirmPassword) {
-      setError("opps Password Not Match");
+      setSiteError("opps Password Not Match");
       return;
     }
-    // setError("");
+
+    setSiteError("");
+
+    createUserWithEmailAndPassword(email, password);
   };
   return (
-    <div className="container box-shadow sizing mx-auto border p-4  mt-5 mb-5">
+    <div className="container box-shadow sizing mx-auto border p-4  mt-5 mb-5 position-relative">
       <h2 className="text-center mb-4">Sign Up</h2>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -82,7 +94,25 @@ const SignUp = () => {
             Please provide your Confirm Password
           </Form.Control.Feedback>
         </Form.Group>
-        <p className="text-danger">{error}</p>
+        <p className="text-danger fw-bold">{siteError}</p>
+        <p className="text-danger fw-bold">{error?.message}</p>
+
+        {user && (
+          <div className="toast show position-absolute top-50 end-0 ">
+            <div className="toast-header  border-bottom-0 border-info bg-success text-light fw-bold">
+              <div className="d-flex align-items-center justify-content-center">
+                <span className="px-4">Create Account SuccessFull</span>
+              </div>
+              <button
+                type="button"
+                className="btn-close ms-auto btn-close-warning"
+                data-bs-dismiss="toast"
+              ></button>
+            </div>
+          </div>
+        )}
+
+        {loading && <p>Loading....</p>}
         <button
           type="submit "
           className="w-100 rounded-0 login-btn-bg-color py-2 shadow-none"
