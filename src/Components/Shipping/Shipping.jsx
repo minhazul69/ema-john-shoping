@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 
 const Shipping = () => {
@@ -9,6 +10,8 @@ const Shipping = () => {
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
   const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+  const [toast, setToast] = useState("");
 
   const handlePhonelBlur = (event) => {
     setPhone(event.target.value);
@@ -26,6 +29,25 @@ const Shipping = () => {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+    }
+    if (form.checkValidity() === true) {
+      setToast(
+        <div className="toast show position-absolute top-50 end-0 ">
+          <div className="toast-header  border-bottom-0 border-info bg-success text-light fw-bold">
+            <div className="d-flex align-items-center justify-content-center">
+              <span className="px-4">Shipping Add SuccessFull</span>
+            </div>
+            <button
+              type="button"
+              className="btn-close ms-auto btn-close-warning"
+              data-bs-dismiss="toast"
+            ></button>
+          </div>
+        </div>
+      );
+      setTimeout(() => {
+        navigate("/inventory");
+      }, 2000);
     }
     const information = { phone, name, address };
     console.log(information);
@@ -91,7 +113,7 @@ const Shipping = () => {
             Please provide your Phone Number
           </Form.Control.Feedback>
         </Form.Group>
-
+        {toast}
         <button
           type="submit "
           className="w-100 rounded-0 login-btn-bg-color py-2 shadow-none"
