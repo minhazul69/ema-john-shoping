@@ -12,6 +12,7 @@ import SignUp from "./Components/SignUp/SignUp";
 import Inventory from "./Components/Inventory/Inventory";
 import RequireAuth from "./Components/RequireAuth/RequireAuth";
 import Shipping from "./Components/Shipping/Shipping";
+import ForgetPassword from "./Components/ForgetPassword/ForgetPassword";
 function App() {
   return (
     <div>
@@ -37,6 +38,7 @@ function App() {
           }
         />
         <Route path="/login" element={<Login />} />
+        <Route path="/forgetPassword" element={<ForgetPassword />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>

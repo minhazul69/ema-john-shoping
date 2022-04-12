@@ -5,6 +5,7 @@ import "./Login.css";
 import googleLogo from "../../images/google.svg";
 import auth from "../../firebase.init";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { sendPasswordResetEmail } from "firebase/auth";
 
 const Login = () => {
   const [validated, setValidated] = useState(false);
@@ -12,6 +13,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
+
   const from = location.state?.from?.pathname || "/";
   // const [error, setError] = useState("");
   const [signInWithEmailAndPassword, user, loading, error] =
@@ -23,7 +25,6 @@ const Login = () => {
     setPassword(event.target.value);
   };
   if (user) {
-    // navigate("/shop");
     setTimeout(() => {
       navigate(from, { replace: true });
     }, 2000);
@@ -99,6 +100,12 @@ const Login = () => {
           New to Ema-john<span className="mx-1">?</span>
           <Link to="/signup" className=" text-decoration-none text-warning">
             Create New Account
+          </Link>
+        </p>
+        <p className="text-center">
+          {" "}
+          <Link to="/forgetPassword" className="text-secondary ">
+            Forget Password ?
           </Link>
         </p>
         <div className="content mt-4 mb-4">
