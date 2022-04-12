@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import googleLogo from "../../images/google.svg";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 
 const SignUp = () => {
@@ -11,6 +14,8 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [siteError, setSiteError] = useState("");
+  const [signInWithGoogle, googleUsers, googleError, googleLoading] =
+    useSignInWithGoogle(auth);
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
@@ -26,9 +31,9 @@ const SignUp = () => {
     setConfirmPassword(event.target.value);
   };
 
-  if (user) {
+  if (user || googleUsers) {
     setTimeout(() => {
-      navigate("/inventory");
+      navigate("/shop");
     }, 2000);
   }
   const handleSubmit = (event) => {
@@ -48,6 +53,9 @@ const SignUp = () => {
     setSiteError("");
 
     createUserWithEmailAndPassword(email, password);
+  };
+  const handleSingInGoogle = () => {
+    signInWithGoogle();
   };
   return (
     <div className="container box-shadow sizing mx-auto border p-4  mt-5 mb-5 position-relative">
@@ -113,23 +121,25 @@ const SignUp = () => {
         </Form.Group>
         <p className="text-danger fw-bold">{siteError}</p>
         <p className="text-danger fw-bold">{error?.message}</p>
+        <p className="text-danger fw-bold">{googleError?.message}</p>
 
-        {user && (
-          <div className="toast show position-absolute top-50 end-0 ">
-            <div className="toast-header  border-bottom-0 border-info bg-success text-light fw-bold">
-              <div className="d-flex align-items-center justify-content-center">
-                <span className="px-4">Create Account SuccessFull</span>
+        {user ||
+          (googleUsers && (
+            <div className="toast show position-absolute top-50 end-0 ">
+              <div className="toast-header  border-bottom-0 border-info bg-success text-light fw-bold">
+                <div className="d-flex align-items-center justify-content-center">
+                  <span className="px-4">Create Account SuccessFull</span>
+                </div>
+                <button
+                  type="button"
+                  className="btn-close ms-auto btn-close-warning"
+                  data-bs-dismiss="toast"
+                ></button>
               </div>
-              <button
-                type="button"
-                className="btn-close ms-auto btn-close-warning"
-                data-bs-dismiss="toast"
-              ></button>
             </div>
-          </div>
-        )}
+          ))}
 
-        {loading && <p>Loading....</p>}
+        {loading || (googleLoading && <p>Loading....</p>)}
         <button
           type="submit "
           className="w-100 rounded-0 login-btn-bg-color py-2 shadow-none"
@@ -146,7 +156,10 @@ const SignUp = () => {
         <div className="content mt-4 mb-4">
           <p className="or">or</p>
         </div>
-        <button className="btn w-100 border border-secondary py-3 mb-3 shadow-none">
+        <button
+          onClick={handleSingInGoogle}
+          className="btn w-100 border border-secondary py-3 mb-3 shadow-none"
+        >
           <img className="img-fluid me-2" src={googleLogo} alt="" /> Continue
           with Google
         </button>
