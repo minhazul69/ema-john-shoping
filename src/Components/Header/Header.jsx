@@ -89,12 +89,21 @@ const Header = () => {
                 >
                   Reviow
                 </Link>
-                <Link
-                  to="/login"
-                  className="text-light N-link text-decoration-none"
-                >
-                  Login
-                </Link>
+                {user ? (
+                  <Button
+                    onClick={handleSignOut}
+                    variant="link shadow-none text-light border-secondary text-decoration-none fw-bold pb-2 border ms-3 rounded-0 bg-primary"
+                  >
+                    Logout
+                  </Button>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="text-light N-link text-decoration-none"
+                  >
+                    Login
+                  </Link>
+                )}
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
