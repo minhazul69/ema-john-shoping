@@ -5,22 +5,28 @@ import googleLogo from "../../images/google.svg";
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
+  useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 
 const SignUp = () => {
   const [validated, setValidated] = useState(false);
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [siteError, setSiteError] = useState("");
+  const [updateProfile] = useUpdateProfile(auth);
   const [signInWithGoogle, googleUsers, googleError, googleLoading] =
     useSignInWithGoogle(auth);
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const navigate = useNavigate();
-
+  console.log(user);
+  const handleNameBlur = (event) => {
+    setName(event.target.value);
+  };
   const handleEmailBlur = (event) => {
     setEmail(event.target.value);
   };
@@ -51,16 +57,31 @@ const SignUp = () => {
     }
 
     setSiteError("");
-
+    updateProfile({ displayName: name });
     createUserWithEmailAndPassword(email, password);
   };
   const handleSingInGoogle = () => {
     signInWithGoogle();
   };
+  // console.log(user);
   return (
     <div className="container box-shadow sizing mx-auto border p-4  mt-5 mb-5 position-relative">
       <h2 className="text-center mb-4">Sign Up</h2>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
+        <Form.Group className="mb-3" controlId="formBasicName">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            onBlur={handleNameBlur}
+            className="py-2 shadow-none"
+            required
+            type="text"
+            name="Name"
+          />
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            Please provide your Full Name
+          </Form.Control.Feedback>
+        </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -70,7 +91,7 @@ const SignUp = () => {
             type="email"
           />
           <div className="position-relative">
-            {user && (
+            {(user || googleUsers) && (
               <div className="toast show position-absolute top-50 end-0 ">
                 <div className="toast-header  border-bottom-0 border-info bg-danger text-light fw-bold">
                   <div className="d-flex align-items-center justify-content-center">

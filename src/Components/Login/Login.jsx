@@ -85,25 +85,7 @@ const Login = () => {
         </Form.Group>
         <p className="text-danger fw-bold">{error?.message}</p>
         <p className="text-danger fw-bold">{googleError?.message}</p>
-        {user && (
-          <div
-            id="successToast"
-            className="toast show position-absolute top-50 end-0 "
-          >
-            <div className="toast-header  border-bottom-0 border-info bg-success text-light fw-bold">
-              <div className="d-flex align-items-center justify-content-center">
-                <span className="px-4">Login SuccessFull</span>
-              </div>
-              <button
-                onClick={removeSuccessMessage}
-                type="button"
-                className="btn-close ms-auto btn-close-warning"
-                data-bs-dismiss="toast"
-              ></button>
-            </div>
-          </div>
-        )}
-        {googleUsers && (
+        {(user || googleUsers) && (
           <div
             id="successToast"
             className="toast show position-absolute top-50 end-0 "
