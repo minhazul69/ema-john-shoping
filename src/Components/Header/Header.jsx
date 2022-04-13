@@ -84,6 +84,12 @@ const Header = () => {
                 </Link>
 
                 <Link
+                  to="/inventory"
+                  className="text-light N-link text-decoration-none"
+                >
+                  Inventory
+                </Link>
+                <Link
                   to="/reviow"
                   className="text-light N-link text-decoration-none"
                 >
