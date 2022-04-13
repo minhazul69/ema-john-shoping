@@ -41,7 +41,7 @@ const Header = () => {
             {user ? (
               <Button
                 onClick={handleSignOut}
-                variant="link shadow-none text-light border-secondary text-decoration-none fw-bold pb-2 border ms-3 rounded-0 bg-primary"
+                variant="link shadow-none text-light border-secondary text-decoration-none fw-bold pb-2 border ms-3 rounded-0 bg-danger"
               >
                 Logout
               </Button>
@@ -98,7 +98,7 @@ const Header = () => {
                 {user ? (
                   <Button
                     onClick={handleSignOut}
-                    variant="link shadow-none text-light border-secondary text-decoration-none fw-bold pb-2 border ms-3 rounded-0 bg-primary"
+                    variant="link shadow-none text-light border-secondary text-decoration-none fw-bold pb-2 border ms-3 rounded-0 bg-danger mt-3"
                   >
                     Logout
                   </Button>

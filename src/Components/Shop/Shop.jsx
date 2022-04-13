@@ -9,7 +9,7 @@ import SingleProduct from "../Single-Product/SingleProduct";
 import "./Shop.css";
 
 const Shop = () => {
-  const [products, setProducts] = useProducts();
+  const [products] = useProducts();
   const [cart, setCart] = useCart(products);
   // const [searchResult, setSearchResult] = useState([]);
 

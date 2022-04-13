@@ -123,21 +123,34 @@ const SignUp = () => {
         <p className="text-danger fw-bold">{error?.message}</p>
         <p className="text-danger fw-bold">{googleError?.message}</p>
 
-        {user ||
-          (googleUsers && (
-            <div className="toast show position-absolute top-50 end-0 ">
-              <div className="toast-header  border-bottom-0 border-info bg-success text-light fw-bold">
-                <div className="d-flex align-items-center justify-content-center">
-                  <span className="px-4">Create Account SuccessFull</span>
-                </div>
-                <button
-                  type="button"
-                  className="btn-close ms-auto btn-close-warning"
-                  data-bs-dismiss="toast"
-                ></button>
+        {user && (
+          <div className="toast show position-absolute top-50 end-0 ">
+            <div className="toast-header  border-bottom-0 border-info bg-success text-light fw-bold">
+              <div className="d-flex align-items-center justify-content-center">
+                <span className="px-4">Create Account SuccessFull</span>
               </div>
+              <button
+                type="button"
+                className="btn-close ms-auto btn-close-warning"
+                data-bs-dismiss="toast"
+              ></button>
             </div>
-          ))}
+          </div>
+        )}
+        {googleUsers && (
+          <div className="toast show position-absolute top-50 end-0 ">
+            <div className="toast-header  border-bottom-0 border-info bg-success text-light fw-bold">
+              <div className="d-flex align-items-center justify-content-center">
+                <span className="px-4">Create Account SuccessFull</span>
+              </div>
+              <button
+                type="button"
+                className="btn-close ms-auto btn-close-warning"
+                data-bs-dismiss="toast"
+              ></button>
+            </div>
+          </div>
+        )}
 
         {loading || (googleLoading && <p>Loading....</p>)}
         <button
