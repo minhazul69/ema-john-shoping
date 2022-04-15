@@ -23,7 +23,6 @@ const SignUp = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const navigate = useNavigate();
-  console.log(user);
   const handleNameBlur = (event) => {
     setName(event.target.value);
   };
@@ -42,7 +41,7 @@ const SignUp = () => {
       navigate("/shop");
     }, 2000);
   }
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const form = event.currentTarget;
@@ -57,13 +56,13 @@ const SignUp = () => {
     }
 
     setSiteError("");
-    updateProfile({ displayName: name });
-    createUserWithEmailAndPassword(email, password);
+    await createUserWithEmailAndPassword(email, password);
+    await updateProfile({ displayName: name });
   };
   const handleSingInGoogle = () => {
     signInWithGoogle();
   };
-  // console.log(user);
+
   return (
     <div className="container box-shadow sizing mx-auto border p-4  mt-5 mb-5 position-relative">
       <h2 className="text-center mb-4">Sign Up</h2>
@@ -144,7 +143,7 @@ const SignUp = () => {
         <p className="text-danger fw-bold">{error?.message}</p>
         <p className="text-danger fw-bold">{googleError?.message}</p>
 
-        {user && (
+        {(user || googleUsers) && (
           <div className="toast show position-absolute top-50 end-0 ">
             <div className="toast-header  border-bottom-0 border-info bg-success text-light fw-bold">
               <div className="d-flex align-items-center justify-content-center">
@@ -158,21 +157,6 @@ const SignUp = () => {
             </div>
           </div>
         )}
-        {googleUsers && (
-          <div className="toast show position-absolute top-50 end-0 ">
-            <div className="toast-header  border-bottom-0 border-info bg-success text-light fw-bold">
-              <div className="d-flex align-items-center justify-content-center">
-                <span className="px-4">Create Account SuccessFull</span>
-              </div>
-              <button
-                type="button"
-                className="btn-close ms-auto btn-close-warning"
-                data-bs-dismiss="toast"
-              ></button>
-            </div>
-          </div>
-        )}
-
         {loading || (googleLoading && <p>Loading....</p>)}
         <button
           type="submit "

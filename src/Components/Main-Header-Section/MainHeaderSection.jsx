@@ -14,7 +14,7 @@ const MainHeaderSection = () => {
           <p className="mb-4">
             Discover all the new arrivals of ready-to-wear collection.
           </p>
-          <Link to="/shop" className="btn bg-color rounded-2 mt-5">
+          <Link to="/shop" className="btn bg-color rounded-2 mt-5 text-light">
             Shop Now
           </Link>
         </div>
