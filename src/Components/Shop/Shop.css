@@ -11,6 +11,16 @@
   background-color: #ff9900;
   padding: 10px 0;
 }
+
+.pagination button {
+  margin-left: 10px;
+  border: 1px solid #ff9900;
+  padding: 5px 20px;
+}
+.pagination .selected {
+  background-color: #ff9900;
+  color: #fff;
+}
 @media screen and (max-width: 768px) {
   .container-fluid {
     grid-template-columns: 2fr 2fr;
