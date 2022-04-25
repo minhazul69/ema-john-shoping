@@ -1,4 +1,3 @@
-import React, { useEffect, useState, getShoppingCart } from "react";
 import { Link } from "react-router-dom";
 import useCart from "../../Hooks/useCart";
 import useProducts from "../../Hooks/useProducts";
@@ -57,7 +56,7 @@ const Shop = () => {
           {products.map((product) => (
             <SingleProduct
               product={product}
-              key={product.id}
+              key={product._id}
               handleAddToCart={() => handleAddToCart(product)}
             ></SingleProduct>
           ))}

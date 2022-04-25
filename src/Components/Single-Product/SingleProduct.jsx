@@ -14,10 +14,10 @@ const SingleProduct = ({ product, handleAddToCart }) => {
         <Card.Body className="pt-2">
           <Card.Title>{name}</Card.Title>
           <h5 className="mt-4">Price: ${price}</h5>
-          <Card.Text className="mt-4 card-info-details">
-            <p className="mb-2">Manufacturer: {seller}</p>
+          <div className="mt-4 card-info-details">
+            <span className="mb-2">Manufacturer: {seller}</span>
             <Rating ratings={ratings}></Rating>
-          </Card.Text>
+          </div>
         </Card.Body>
         <button
           onClick={handleAddToCart}
@@ -32,7 +32,7 @@ const SingleProduct = ({ product, handleAddToCart }) => {
 export const Rating = ({ ratings }) => {
   if (ratings === 5) {
     return (
-      <p className="text-warning icon">
+      <div className="text-warning icon">
         <div>
           <small className="text-success">{ratings} Star</small>
           <div>
@@ -43,11 +43,11 @@ export const Rating = ({ ratings }) => {
             <i className="fa-solid fa-star"></i>
           </div>
         </div>
-      </p>
+      </div>
     );
   } else if (ratings === 4) {
     return (
-      <p className="text-warning icon">
+      <div className="text-warning icon">
         <div>
           <small className="text-success">{ratings} Star</small>
           <div>
@@ -58,11 +58,11 @@ export const Rating = ({ ratings }) => {
             <i className="fa-solid fa-star gray"></i>
           </div>
         </div>
-      </p>
+      </div>
     );
   } else if (ratings === 3) {
     return (
-      <p className="text-warning icon">
+      <div className="text-warning icon">
         <div>
           <small className="text-success">{ratings} Star</small>
           <div>
@@ -73,11 +73,11 @@ export const Rating = ({ ratings }) => {
             <i className="fa-solid fa-star gray"></i>
           </div>
         </div>
-      </p>
+      </div>
     );
   } else if (ratings === 2) {
     return (
-      <p className="text-warning icon">
+      <div className="text-warning icon">
         <div>
           <small className="text-success">{ratings} Star</small>
           <div>
@@ -88,7 +88,7 @@ export const Rating = ({ ratings }) => {
             <i className="fa-solid fa-star gray"></i>
           </div>
         </div>
-      </p>
+      </div>
     );
   } else if (ratings) {
     return <p className="text-warning icon">No Rating</p>;
