@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useCart from "../../Hooks/useCart";
 import useProducts from "../../Hooks/useProducts";
@@ -10,21 +11,31 @@ import "./Shop.css";
 const Shop = () => {
   const [products] = useProducts();
   const [cart, setCart] = useCart(products);
+  const [pageCount, setPageCount] = useState(0);
+  useEffect(() => {
+    fetch("http://localhost:5000/productCount")
+      .then((res) => res.json())
+      .then((data) => {
+        const count = data.count;
+        const pages = Math.ceil(count / 10);
+        setPageCount(pages);
+      });
+  }, []);
   // const [searchResult, setSearchResult] = useState([]);
 
   const handleAddToCart = (selectProduct) => {
     let newCart = [];
-    const exists = cart.find((product) => product.id === selectProduct.id);
+    const exists = cart.find((product) => product._id === selectProduct._id);
     if (!exists) {
       selectProduct.quantity = 1;
       newCart = [...cart, selectProduct];
     } else {
-      const rest = cart.filter((product) => product.id !== selectProduct.id);
+      const rest = cart.filter((product) => product._id !== selectProduct._id);
       exists.quantity = exists.quantity + 1;
       newCart = [...rest, exists];
     }
     setCart(newCart);
-    addToDb(selectProduct.id);
+    addToDb(selectProduct._id);
   };
   const handleClearCart = () => {
     setCart([]);
