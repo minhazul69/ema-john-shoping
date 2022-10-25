@@ -10,10 +10,11 @@ const Shop = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useCart(products);
   const [pageCount, setPageCount] = useState(0);
+  console.log(pageCount);
   const [page, setPage] = useState(0);
   const [size, setSize] = useState(10);
   useEffect(() => {
-    fetch("https://emajhon-shopping.herokuapp.com/productCount")
+    fetch("https://ema-john-server-backend.vercel.app/productCount")
       .then((res) => res.json())
       .then((data) => {
         const count = data.count;
@@ -24,7 +25,7 @@ const Shop = () => {
 
   useEffect(() => {
     fetch(
-      `https://emajhon-shopping.herokuapp.com/product?page=${page}&size=${size}`
+      `https://ema-john-server-backend.vercel.app/product?page=${page}&size=${size}`
     )
       .then((res) => res.json())
       .then((data) => setProducts(data));

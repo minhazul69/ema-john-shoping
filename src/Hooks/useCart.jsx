@@ -7,7 +7,7 @@ const useCart = () => {
     const storedCart = getShoppingCart();
     const saveCart = [];
     const keys = Object.keys(storedCart);
-    fetch("https://emajhon-shopping.herokuapp.com/productByKeys", {
+    fetch("https://ema-john-server-backend.vercel.app/productByKeys", {
       method: "POST",
       headers: {
         "content-type": "application/json",
