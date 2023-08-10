@@ -7,7 +7,7 @@ const useCart = () => {
     const storedCart = getShoppingCart();
     const saveCart = [];
     const keys = Object.keys(storedCart);
-    fetch("https://ema-john-server-backend.vercel.app/productByKeys", {
+    fetch("https://ema-john-1136.onrender.com/productByKeys", {
       method: "POST",
       headers: {
         "content-type": "application/json",

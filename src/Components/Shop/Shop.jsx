@@ -13,8 +13,16 @@ const Shop = () => {
   console.log(pageCount);
   const [page, setPage] = useState(0);
   const [size, setSize] = useState(10);
+  const fetchData = async () => {
+    const link = await fetch("https://ema-john-1136.onrender.com/productCount");
+    const data = await link.json();
+    const count = data.count;
+    const pages = Math.ceil(count / 10);
+    return setPageCount(pages);
+  };
   useEffect(() => {
-    fetch("https://ema-john-server-backend.vercel.app/productCount")
+    fetchData();
+    fetch("https://ema-john-1136.onrender.com/productCount")
       .then((res) => res.json())
       .then((data) => {
         const count = data.count;
@@ -25,12 +33,12 @@ const Shop = () => {
 
   useEffect(() => {
     fetch(
-      `https://ema-john-server-backend.vercel.app/product?page=${page}&size=${size}`
+      `https://ema-john-1136.onrender.com/product?page=${page}&size=${size}`
     )
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, [page, size]);
-  // const [searchResult, setSearchResult] = useState([]);
+  const [searchResult, setSearchResult] = useState([]);
 
   const handleAddToCart = (selectProduct) => {
     let newCart = [];
@@ -50,13 +58,13 @@ const Shop = () => {
     setCart([]);
     deleteShoppingCart();
   };
-  // const handleSearch = (event) => {
-  //   const searchText = event.target.value;
-  //   const match = products.filter((product) =>
-  //     product.name.includes(searchText)
-  //   );
-  //   setSearchResult(match);
-  // };
+  const handleSearch = (event) => {
+    const searchText = event.target.value;
+    const match = products.filter((product) =>
+      product.name.includes(searchText)
+    );
+    setSearchResult(match);
+  };
 
   return (
     <div className="container-fluid mt-5 pt-4">
@@ -64,7 +72,7 @@ const Shop = () => {
         <div>
           <form className="d-flex w-50 mx-auto mb-4">
             <input
-              // onChange={handleSearch}
+              onChange={handleSearch}
               className="form-control me-2"
               type="search"
               placeholder="Search"
